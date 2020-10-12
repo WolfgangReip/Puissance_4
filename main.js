@@ -7,6 +7,7 @@
 jeu.initialisation();
 jeu.showPuissance4();
 
+let joueurEnCours = 1;
 // while (true) {
 //   if (play(1)) {
 //     console.log("Player 1 won");
@@ -28,15 +29,25 @@ jeu.showPuissance4();
  * Return true if player won
  * @param {Number} player
  */
-function play(player) {
-  let emptyRow = -1;
-  let column = -1;
-  while (emptyRow === -1 || column <= 0 || column > 7) {
-    console.log("Choose a column on a empty box");
-    column = game.chooseColumn();
-    emptyRow = game.returnRowEmptyBoxColumn(column);
+function jouer(column) {
+  console.log("ici");
+  let emptyRow = jeu.returnRowEmptyBoxColumn(column);
+  jeu.playBox(joueurEnCours, emptyRow, column);
+
+  if (joueurEnCours === 1) {
+    joueurEnCours = 2;
+  } else {
+    joueurEnCours = 1;
   }
-  game.playBox(player, emptyRow, column);
-  game.showPuissance4();
-  return game.endGameVerification(player);
+  jeu.showPuissance4();
+  // let emptyRow = -1;
+  // let column = -1;
+  // while (emptyRow === -1 || column <= 0 || column > 7) {
+  //   console.log("Choose a column on a empty box");
+  //   column = game.chooseColumn();
+  //   emptyRow = game.returnRowEmptyBoxColumn(column);
+  // }
+  // game.playBox(player, emptyRow, column);
+  // game.showPuissance4();
+  // return game.endGameVerification(player);
 }

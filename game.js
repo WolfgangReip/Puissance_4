@@ -21,6 +21,13 @@ let jeu = {
       for (let j = 0; j < this.nbColumn; j++) {
         content +=
           "<td class='border border-primary text-center' style='width:100px;height:100px'>";
+        if (this.puissance4[i][j] === 0) {
+          content += "";
+        } else if (this.puissance4[i][j] === 1) {
+          content += "<img src='J1.png' class='bg-warning rounded-circle'";
+        } else if (this.puissance4[i][j] === 2) {
+          content += "<img src='J2.png' class='bg-danger rounded-circle'";
+        }
         content += "</td>";
       }
       content += "</tr>";
@@ -28,7 +35,9 @@ let jeu = {
     content += "<tr>";
     for (let i = 1; i <= this.nbColumn; i++) {
       content +=
-        "<td><button type='button' class='btn btn-warning' style='width: 100px'>Row " +
+        "<td><button type='button' class='btn btn-warning' style='width: 100px' onClick='jouer(" +
+        i +
+        ")'>Row " +
         i +
         "</button></td>";
     }
