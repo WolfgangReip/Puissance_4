@@ -4,8 +4,8 @@
 
 // game.player1Char = choseCharacter(1);
 // game.player2Char = choseCharacter(2);
-game.initialisation();
-game.showPuissance4();
+jeu.initialisation();
+jeu.showPuissance4();
 
 // while (true) {
 //   if (play(1)) {
@@ -18,10 +18,10 @@ game.showPuissance4();
 //   }
 // }
 
-function choseCharacter(player) {
-  let txt = " Chose a character you wanna play with " + player + " : ";
-  return toolbox.inputCharacter(txt);
-}
+// function choseCharacter(player) {
+//   let txt = " Chose a character you wanna play with " + player + " : ";
+//   return toolbox.inputCharacter(txt);
+// }
 
 /**
  * Function to allow player to play a box

@@ -12,21 +12,45 @@ let jeu = {
    * Show the puissnce 4 board
    */
   showPuissance4: function () {
-    for (let i = 0; i < this.puissance4.length; i++) {
-      let row = "";
-      for (let j = 0; j < this.puissance4[i].length; j++) {
-        row += "| ";
-        if (this.puissance4[i][j] == 0) {
-          row += "_";
-        } else if (this.puissance4[i][j] == 1) {
-          row += this.player1Char;
-        } else if (this.puissance4[i][j] == 2) {
-          row += this.player2Char;
-        }
-        row += " |";
+    const jeu = document.querySelector("#game");
+    jeu.innerHTML = "";
+
+    let content = "<table>";
+    for (let i = 0; i < this.nbRow; i++) {
+      content += "<tr>";
+      for (let j = 0; j < this.nbColumn; j++) {
+        content +=
+          "<td class='border border-primary text-center' style='width:100px;height:100px'>";
+        content += "</td>";
       }
-      console.log(row);
+      content += "</tr>";
     }
+    content += "<tr>";
+    for (let i = 1; i <= this.nbColumn; i++) {
+      content +=
+        "<td><button type='button' class='btn btn-warning' style='width: 100px'>Row " +
+        i +
+        "</button></td>";
+    }
+
+    content += "</tr>";
+    content += "</table>";
+    jeu.innerHTML = content;
+    // for (let i = 0; i < this.puissance4.length; i++) {
+    //   let row = "";
+    //   for (let j = 0; j < this.puissance4[i].length; j++) {
+    //     row += "| ";
+    //     if (this.puissance4[i][j] == 0) {
+    //       row += "_";
+    //     } else if (this.puissance4[i][j] == 1) {
+    //       row += this.player1Char;
+    //     } else if (this.puissance4[i][j] == 2) {
+    //       row += this.player2Char;
+    //     }
+    //     row += " |";
+    //   }
+    //   console.log(row);
+    // }
   },
   playBox: function (player, row, column) {
     this.puissance4[row][column - 1] = player;
