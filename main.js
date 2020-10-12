@@ -8,6 +8,11 @@ jeu.initialisation();
 jeu.showPuissance4();
 
 let joueurEnCours = 1;
+
+const tour = document.querySelector("#tour");
+const alert = document.querySelector(".alert");
+
+let endGame = false;
 // while (true) {
 //   if (play(1)) {
 //     console.log("Player 1 won");
@@ -30,16 +35,25 @@ let joueurEnCours = 1;
  * @param {Number} player
  */
 function jouer(column) {
-  console.log("ici");
-  let emptyRow = jeu.returnRowEmptyBoxColumn(column);
-  jeu.playBox(joueurEnCours, emptyRow, column);
+  if (!endGame) {
+    let emptyRow = jeu.returnRowEmptyBoxColumn(column);
+    if (emptyRow != -1) {
+      jeu.playBox(joueurEnCours, emptyRow, column);
+      if (jeu.endGameVerification(joueurEnCours)) {
+        handleendOfGame();
+      }
 
-  if (joueurEnCours === 1) {
-    joueurEnCours = 2;
-  } else {
-    joueurEnCours = 1;
+      if (joueurEnCours === 1) {
+        joueurEnCours = 2;
+        tour.innerHTML = "Player 2 turn";
+      } else {
+        joueurEnCours = 1;
+        tour.innerHTML = "Player 1 turn";
+      }
+      jeu.showPuissance4();
+    }
   }
-  jeu.showPuissance4();
+
   // let emptyRow = -1;
   // let column = -1;
   // while (emptyRow === -1 || column <= 0 || column > 7) {
@@ -50,4 +64,10 @@ function jouer(column) {
   // game.playBox(player, emptyRow, column);
   // game.showPuissance4();
   // return game.endGameVerification(player);
+}
+
+function handleendOfGame() {
+  endGame = true;
+  alert.innerHTML = "End of game";
+  alert.classList.remove("d-none");
 }

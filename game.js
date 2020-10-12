@@ -35,7 +35,7 @@ let jeu = {
     content += "<tr>";
     for (let i = 1; i <= this.nbColumn; i++) {
       content +=
-        "<td><button type='button' class='btn btn-warning' style='width: 100px' onClick='jouer(" +
+        "<td><button type='button' class='btn btn-primary' style='width: 100px' onClick='jouer(" +
         i +
         ")'>Row " +
         i +
